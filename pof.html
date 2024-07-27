@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Practical 6(c)</title>
+		<style>
+			span{color:red;}
+		</style>
+		<script type="text/javascript">
+			function empty(str,id){
+				if (str==""){
+					id.innerText="*This filed is mandatory.";
+					return false;
+				}
+				else{
+					id.innerText="";
+					return true;
+				}
+			}
+			function key(){
+				if((event.keyCode>=65 && event.keyCode<=90) || event.keyCode==8 || event.keyCode==9 )
+					return true;
+				else{
+					event.preventDefault();
+					return false;
+				}
+			}
+			function validate(){
+				// Name validation
+				if (f.Student_name.value == ""){
+					alert("Name filed in mandatory.");
+					return false;
+				}
+				else{
+					str=f.Student_name.value;
+					for (let i of str){
+						if(!((i >= "a" && i <="z") || (i >="A" && i<="Z"))){
+							alert("Not a valid name.\nName contains only charcters.");
+							return false;
+						}
+					}
+				}
+				// Mobile no validation
+				if (f.Mnumber.value == ""){
+					alert("Mobile no filed in mandatory.");
+					return false;
+				}
+				else{
+					num=f.Mnumber.value;
+					if (num.length != 10){
+						alert("Mobile no is not valid");
+						return false;
+					}
+				}
+				// Password Validation
+				
+			}
+		</script>
+	</head>
+	<body bgcolor="CadetBlue">
+		<h3 style="color:DarkMagenta; background-color: Darkseagreen; border: 2px solid rgb(200, 200, 200);" ><center>PLACE ORDER INFORMATION</center></h3>
+		<form action="a.php",method="get" name="f">
+		<table style="float:left; margin-left:110px; margin-right:40px; width:50%;" >
+		<tr>
+	    <td >
+		Name: <input type="text" id=Sn name="Student_name" placeholder="Enter your name" size="25" onblur="return empty(Sn.value,k)" > <span id="k"></span>
+		<br><br>
+	Mobile No: <input id=Mn type="number" name="Mnumber" placeholder="Enter your Mobile no" onblur="return empty(Mn.value,k1)"><span id="k1"></span>
+		<br><br>
+	Email id: <input type="email" id=Em name="email" placeholder="Enter your Email id" onblur="return empty(Em.value,k2)"><span id="k2"></span>
+		<br><br>
+	Address: <input type="text" id=Sn name="Address" placeholder="Enter your Address" size="50" onblur="return empty(Sn.value,k3)" > <span id="k"></span>
+		<br><br>
+		<button onclick="return validate()" value="SignUp"><a href="tfp.html">Submit</a></button>
+		</td>
+		</tr>
+		</table>
+		<br><br>
+		</form>
+
+		<center>
+
+		<script>
+			f.Student_name.addEventListener('keydown',key);
+		</script>
+	</body>
+</html>
